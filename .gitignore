@@ -1,11 +1,5 @@
-# Compiled
-*.elc
-
-# Packaging
-.cask
-
-# Backup files
+# -*- mode: gitignore; -*-
+.DS_Store
 *~
-
-# Undo-tree save-files
-*.~undo-tree
+*.elc
+\#*
