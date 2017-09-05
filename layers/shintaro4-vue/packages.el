@@ -12,15 +12,20 @@
 (setq shintaro4-vue-packages
       '(
         company
+        company-tern
         evil-matchit
         flycheck
         js-doc
         smartparens
+        tern
         web-mode
         ))
 
 (defun shintaro4-vue/post-init-company ()
   (spacemacs|add-company-hook shintaro4-vue-mode))
+
+(defun shintaro4-vue/post-init-company-tern ()
+  (push 'company-tern company-backends-shintaro4-vue-mode))
 
 (defun shintaro4-vue/post-init-evil-matchit ()
   (with-eval-after-load 'evil-matchit
@@ -44,6 +49,10 @@
   (if dotspacemacs-smartparens-strict-mode
       (add-hook 'shintaro4-vue-mode-hook #'smartparens-strict-mode)
     (add-hook 'shintaro4-vue-mode-hook #'smartparens-mode)))
+
+(defun shintaro4-vue/post-init-tern ()
+  (add-hook 'shintaro4-vue-mode-hook 'tern-mode)
+  (spacemacs//set-tern-key-bindings 'shintaro4-vue-mode))
 
 (defun shintaro4-vue/post-init-web-mode ()
   (define-derived-mode shintaro4-vue-mode web-mode "shintaro4-vue")
