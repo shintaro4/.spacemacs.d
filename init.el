@@ -46,30 +46,39 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
      helm
+     ;; ivy
 
      ;; 5 Emacs
      better-defaults
 
      ;; 10 Programming and markup languages
-     clojure
+     ;clojure
+     csv
      emacs-lisp
-     ;javascript
-     ;python
+     (javascript :variables
+                 ;; javascript-disable-tern-port-files nil
+                 js2-mode-show-parse-errors nil
+                 js2-mode-show-strict-warnings nil)
+     markdown
+     python
+     typescript
+     yaml
 
      ;; 12 Operating systems
      osx
 
      ;; 14 Source control
      git
+     github
 
      ;; 18 Tools
-     ;(shell :variables
-     ;       shell-default-shell 'multi-term
-     ;       shell-default-term-shell "/bin/zsh")
+     (shell :variables
+            shell-default-shell 'multi-term
+            shell-default-term-shell "/bin/zsh")
 
      ;; shintaro4
-     ;shintaro4-html
-     ;shintaro4-vue
+     shintaro4-html
+     shintaro4-vue
 
      )
    ;; List of additional packages that will be installed without being
@@ -148,8 +157,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark)
+   dotspacemacs-themes '(solarized-light
+                         ;;zenburn
+                         spacemacs-dark
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -347,27 +358,19 @@ you should place your code here."
   (global-set-key (kbd "C-<tab>") 'other-window)
   (global-set-key (kbd "C-S-<tab>") (lambda () (interactive) (other-window -1)))
 
-  ;; (setq-default
-  ;;  ;; js2-mode
-  ;;  js2-basic-offset 2
-  ;;  js-indent-level 2
-  ;;  ;; web-mode
-  ;;  web-mode-markup-indent-offset 2
-  ;;  web-mode-css-indent-offset 2
-  ;;  web-mode-code-indent-offset 2)
+  ;; JavaScript
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   js-indent-level 2
+   ;; web-mode
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2)
+
+  ;; TypeScript
+  (setq
+   typescript-indent-level 2
+   tide-format-options '(:indentSize 2 :tabSize 2))
 
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org spaceline powerline smeargle reveal-in-osx-finder restart-emacs rainbow-delimiters popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-plus-contrib org-bullets open-junk-file neotree mwim move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint launchctl indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-gitignore request helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree elisp-slime-nav dumb-jump f dash s diminish company-statistics company-quickhelp pos-tip company column-enforce-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider sesman spinner queue pkg-info clojure-mode epl bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
