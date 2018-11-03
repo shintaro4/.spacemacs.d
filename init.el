@@ -51,25 +51,33 @@ values."
      better-defaults
 
      ;; 10 Programming and markup languages
-     clojure
+     ;clojure
+     csv
      emacs-lisp
-     ;javascript
-     ;python
+     (javascript :variables
+                 ;; javascript-disable-tern-port-files nil
+                 js2-mode-show-parse-errors nil
+                 js2-mode-show-strict-warnings nil)
+     markdown
+     python
+     typescript
+     yaml
 
      ;; 12 Operating systems
      osx
 
      ;; 14 Source control
      git
+     github
 
      ;; 18 Tools
-     ;(shell :variables
-     ;       shell-default-shell 'multi-term
-     ;       shell-default-term-shell "/bin/zsh")
+     (shell :variables
+            shell-default-shell 'multi-term
+            shell-default-term-shell "/bin/zsh")
 
      ;; shintaro4
-     ;shintaro4-html
-     ;shintaro4-vue
+     shintaro4-html
+     shintaro4-vue
 
      )
    ;; List of additional packages that will be installed without being
@@ -148,8 +156,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark)
+   dotspacemacs-themes '(solarized-light
+                         ;;zenburn
+                         spacemacs-dark
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -347,16 +357,23 @@ you should place your code here."
   (global-set-key (kbd "C-<tab>") 'other-window)
   (global-set-key (kbd "C-S-<tab>") (lambda () (interactive) (other-window -1)))
 
-  ;; (setq-default
-  ;;  ;; js2-mode
-  ;;  js2-basic-offset 2
-  ;;  js-indent-level 2
-  ;;  ;; web-mode
-  ;;  web-mode-markup-indent-offset 2
-  ;;  web-mode-css-indent-offset 2
-  ;;  web-mode-code-indent-offset 2)
+  ;; JavaScript
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   js-indent-level 2
+   ;; web-mode
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2)
+
+  ;; TypeScript
+  (setq
+   typescript-indent-level 2
+   tide-format-options '(:indentSize 2 :tabSize 2))
 
   )
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
