@@ -1,5 +1,6 @@
 # -*- mode: gitignore; -*-
 .DS_Store
+.spacemacs.env
 *~
 *.elc
 \#*
