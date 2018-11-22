@@ -65,10 +65,14 @@ This function should only modify configuration layer settings."
      ;; +intl
 
      ;; +lang
+     (clojure :variables
+              clojure-enable-sayid t
+              clojure-enable-clj-refactor t)
      csv
      emacs-lisp
      javascript
      json
+     html
      markdown
      python
      typescript
@@ -516,9 +520,9 @@ before packages are loaded."
    js2-basic-offset 2
    js-indent-level 2
    ;; web-mode
-   ;web-mode-markup-indent-offset 2
-   ;web-mode-css-indent-offset 2
-   ;web-mode-code-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
    )
 
   ;; TypeScript
