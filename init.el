@@ -71,11 +71,15 @@ This function should only modify configuration layer settings."
      csv
      emacs-lisp
      javascript
+     (javascript :variables
+                 js2-basic-offset 2
+                 js-indent-level 2)
      json
      html
      markdown
      python
-     typescript
+     (typescript :variables
+                 typescript-backend 'tide)
      yaml
 
      ;; +misc
@@ -96,6 +100,7 @@ This function should only modify configuration layer settings."
      ;; +tags
 
      ;; +tools
+     nginx
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-term-shell "/bin/zsh")
@@ -234,7 +239,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
+   dotspacemacs-themes '(rebecca
+                         doom-opera-light
                          spacemacs-light
                          spacemacs-dark)
 
@@ -516,19 +522,16 @@ before packages are loaded."
 
   ;; JavaScript
   (setq-default
-   ;; js2-mode
-   js2-basic-offset 2
-   js-indent-level 2
    ;; web-mode
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   )
+   web-mode-code-indent-offset 2)
 
   ;; TypeScript
   (setq
    typescript-indent-level 2
-   tide-format-options '(:indentSize 2 :tabSize 2))
+   tide-format-options '(:indentSize 2 :tabSize 2)
+   tide-tsserver-executable "/usr/local/bin/tsserver")
 
   )
 
