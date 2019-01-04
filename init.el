@@ -45,7 +45,16 @@ This function should only modify configuration layer settings."
      syntax-checking
 
      ;; +completion
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t
+                      ;; https://github.com/syl20bnr/spacemacs/issues/11541
+                      ;; # To fix tooltip text color in Dark mode, set default;
+                      ;; $ defaults write org.gnu.Emacs NSRequiresAquaSystemAppearance true
+                      ;;
+                      ;; # reset defaults
+                      ;; $ defaults delete org.gnu.Emacs NSRequiresAquaSystemAppearance
+                      auto-completion-enable-sort-by-usage t)
      helm
 
      ;; +emacs
@@ -54,7 +63,6 @@ This function should only modify configuration layer settings."
      ;; +email
 
      ;; +filetree
-     neotree
 
      ;; +fonts
 
@@ -70,8 +78,8 @@ This function should only modify configuration layer settings."
               clojure-enable-clj-refactor t)
      csv
      emacs-lisp
-     javascript
      (javascript :variables
+                 javascript-backend 'tern
                  js2-basic-offset 2
                  js-indent-level 2)
      json
@@ -104,6 +112,8 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-term-shell "/bin/zsh")
+     (tern :variables
+           tern-command '("node" "/usr/local/bin/tern"))
 
      ;; +web-services
 
@@ -215,7 +225,7 @@ It should only modify the values of Spacemacs settings."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner nil
 
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
