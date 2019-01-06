@@ -86,6 +86,8 @@ This function should only modify configuration layer settings."
      html
      markdown
      python
+     (sql :variables
+          sql-capitalize-keywords t)
      (typescript :variables
                  typescript-backend 'tide)
      yaml
