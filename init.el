@@ -251,8 +251,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(rebecca
-                         doom-opera-light
+   dotspacemacs-themes '(doom-opera-light
+                         rebecca
                          spacemacs-light
                          spacemacs-dark)
 
@@ -544,6 +544,9 @@ before packages are loaded."
    typescript-indent-level 2
    tide-format-options '(:indentSize 2 :tabSize 2)
    tide-tsserver-executable "/usr/local/bin/tsserver")
+
+  ;; Python
+  (setq python-shell-interpreter "/usr/local/bin/python3")
 
   )
 
