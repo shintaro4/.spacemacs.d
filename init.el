@@ -86,8 +86,6 @@ This function should only modify configuration layer settings."
      html
      markdown
      python
-     (sql :variables
-          sql-capitalize-keywords t)
      (typescript :variables
                  typescript-backend 'tide)
      yaml
@@ -105,15 +103,18 @@ This function should only modify configuration layer settings."
 
      ;; +source-control
      git
-     github
 
      ;; +tags
 
      ;; +tools
      nginx
+     (ranger :variables
+             ranger-show-preview t
+             ranger-show-hidden t)
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-term-shell "/bin/zsh")
+     systemd
      (tern :variables
            tern-command '("node" "/usr/local/bin/tern"))
 
@@ -251,8 +252,10 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-opera-light
+   dotspacemacs-themes '(doom-nova
+                         doom-spacegrey
                          rebecca
+                         doom-opera-light
                          spacemacs-light
                          spacemacs-dark)
 
