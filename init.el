@@ -67,6 +67,7 @@ This function should only modify configuration layer settings."
      ;; +fonts
 
      ;; +frameworks
+     vue
 
      ;; +fun
 
@@ -541,7 +542,8 @@ before packages are loaded."
    ;; web-mode
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2)
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
 
   ;; TypeScript
   (setq
