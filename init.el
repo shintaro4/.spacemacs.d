@@ -86,7 +86,8 @@ This function should only modify configuration layer settings."
      json
      html
      markdown
-     python
+     (python :variables
+             python-backend 'lsp)
      (typescript :variables
                  typescript-backend 'tide)
      sql
