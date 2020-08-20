@@ -79,11 +79,18 @@ This function should only modify configuration layer settings."
               clojure-enable-clj-refactor t)
      csv
      emacs-lisp
+     (go :variables
+         ;go-backend 'go-mode
+         go-backend 'lsp
+         ;go-format-before-save t
+         go-use-golangci-lint t
+         godoc-at-point-function 'godoc-gogetdoc)
      (javascript :variables
                  javascript-backend 'tern
                  js2-basic-offset 2
                  js-indent-level 2)
      json
+     julia
      html
      markdown
      (python :variables
@@ -111,6 +118,8 @@ This function should only modify configuration layer settings."
      ;; +tags
 
      ;; +tools
+     docker
+     lsp
      nginx
      (ranger :variables
              ranger-show-preview t
@@ -258,11 +267,13 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-opera-light
-                         doom-nova
-                         doom-spacegrey
-                         spacemacs-light
-                         spacemacs-dark)
+   dotspacemacs-themes '(doom-nord-light
+                         doom-nord
+                         doom-opera
+                         doom-opera-light
+                         doom-wilmersdorf
+                         spacemacs-light)
+
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -349,7 +360,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 0.01
 
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
@@ -439,7 +450,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
@@ -565,6 +576,8 @@ before packages are loaded."
   ;; Python
   (setq python-shell-interpreter "/usr/local/var/pyenv/shims/python")
 
+  ;; Magit
+  (setq transient-default-level 5)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
