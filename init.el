@@ -76,7 +76,8 @@ This function should only modify configuration layer settings."
      ;; +lang
      (clojure :variables
               clojure-enable-sayid t
-              clojure-enable-clj-refactor t)
+              clojure-enable-clj-refactor t
+              clojure-enable-linters '(clj-kondo joker))
      csv
      emacs-lisp
      (go :variables
@@ -142,7 +143,8 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '((cljstyle-mode
+                                       :location (recipe :fetcher github :repo "jstokes/cljstyle-mode")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -578,6 +580,9 @@ before packages are loaded."
 
   ;; Magit
   (setq transient-default-level 5)
+
+  ;; cljstyle
+  (add-hook 'clojure-mode-hook #'cljstyle-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
