@@ -54,7 +54,7 @@ This function should only modify configuration layer settings."
                       ;; # reset defaults
                       ;; $ defaults delete org.gnu.Emacs NSRequiresAquaSystemAppearance
                       auto-completion-enable-sort-by-usage t)
-     helm
+     ivy
 
      ;; +emacs
      better-defaults
@@ -80,6 +80,7 @@ This function should only modify configuration layer settings."
               clojure-enable-linters '(clj-kondo joker))
      csv
      emacs-lisp
+     graphql
      (go :variables
          ;go-backend 'go-mode
          go-backend 'lsp
@@ -88,9 +89,11 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc)
      (javascript :variables
                  javascript-backend 'tern
-                 js2-basic-offset 2
-                 js-indent-level 2)
-     json
+                 javascript-fmt-tool 'web-beautify
+                 js-indent-level 2
+                 js2-basic-offset 2)
+     (json :variables
+           javascript-fmt-tool 'web-beautify)
      julia
      html
      markdown
@@ -120,6 +123,7 @@ This function should only modify configuration layer settings."
 
      ;; +tools
      docker
+     kubernetes
      lsp
      nginx
      (ranger :variables
@@ -131,7 +135,8 @@ This function should only modify configuration layer settings."
      systemd
      (tern :variables
            tern-command '("node" "/usr/local/bin/tern"))
-
+     (terraform :variables
+                terraform-auto-format-on-save t)
      ;; +web-services
 
      )
